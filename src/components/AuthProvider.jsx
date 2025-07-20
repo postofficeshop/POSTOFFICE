@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
 
     const logout = () => {
         setUser(null);
+        setIsLogged(false);
     };
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{user, login, logout, isLogged, setIsLogged}}>
+        <AuthContext.Provider value={{user, login, logout, isLogged, setIsLogged, setUser}}>
             {children}
         </AuthContext.Provider>
     );
