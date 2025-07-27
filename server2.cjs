@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const path = require('path');
 const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = 5000;
@@ -21,7 +22,8 @@ const JSON_SERVER_URL = 'http://localhost:3005';
 //상품 등록
 app.post('/goods', async (req, res) => {
     console.log('물품 등록 서버 실행');
-    const {productName, explanation, price, discount, quantity} = req.body;
+    const id = uuidv4();
+    const {productName, explanation, price, discount, quantity, imageUrl} = req.body;
 
     try{
         //상품 중복 검사
@@ -34,7 +36,7 @@ app.post('/goods', async (req, res) => {
         const productsRes = await fetch(`${JSON_SERVER_URL}/products`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ productName, explanation, price, discount, quantity, imageUrl })
+            body: JSON.stringify({id, productName, explanation, price, discount, quantity, imageUrl })
         });
 
         if(!productsRes.ok) {
@@ -44,6 +46,7 @@ app.post('/goods', async (req, res) => {
 
         console.log('상품 등록 성공');
         const newProducts = await productsRes.json();
+        console.log(newProducts);
         res.status(201).json({ message: '상품이 등록되었습니다.', newProducts })
     } catch(err) {
         console.error('상품 등록 서버 오류', err);
@@ -75,6 +78,29 @@ app.post('/uploads', upload.single('image'), (req, res) => {
     const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
     res.json({ imageUrl });
 });
+
+app.get('/goods', async (req, res) => {
+    console.log('상품 리스트 출력');
+    
+    try{
+        const goodsRes = await fetch(`${JSON_SERVER_URL}/products`, {
+            method: 'GET',
+        });
+
+        if(!goodsRes.ok) {
+            console.error('상품을 불러오지 못했습니다.');
+            return res.status(401).json({ message: '상품을 불러오지 못했습니다' });
+        }
+
+        console.log('상품 불러오기 성공');
+        const goodsData = await goodsRes.json();
+        res.status(201).json({ message: '상품 불러오기 성공하였습니다.', goods: goodsData }); 
+        console.log(goodsData);
+    }catch(err) {
+        console.error('상품 불러오기 서버 오류', err);
+        return res.status(500).json({ message: '상품 불러오기 서버 오류' });
+    };
+}); 
 
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT} 실행 중`);

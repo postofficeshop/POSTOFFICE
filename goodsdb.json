@@ -1,20 +1,40 @@
 {
   "products": [
     {
-      "productName": "가방",
-      "explanation": "가방입니다",
-      "price": 10000,
-      "discount": 10,
-      "quantity": 10,
-      "id": 1
+      "id": "9eb3b006-c9d6-4bed-9f14-5a719c796143",
+      "productName": "테스트",
+      "explanation": "테스트 입니다",
+      "price": 555555,
+      "discount": 121,
+      "quantity": 21521,
+      "imageUrl": "http://localhost:5000/uploads/1753599364604-collection_img4.jpg"
     },
     {
-      "productName": "ㄴㄴㄴ",
-      "explanation": "ㅁㄴㅇㅁㄴㅇ",
-      "price": 45254,
-      "discount": 2424,
-      "quantity": 4245,
-      "id": 2
+      "id": "47130364-301b-475f-8d2f-62de8693e081",
+      "productName": "테스트 2",
+      "explanation": "ㅇㅇㅇ",
+      "price": 15,
+      "discount": 1,
+      "quantity": 2,
+      "imageUrl": "http://localhost:5000/uploads/1753601033619-collection_img2.jpg"
+    },
+    {
+      "id": "a869bab2-a7aa-4d25-8ee9-4720c7f9f290",
+      "productName": "테스트3",
+      "explanation": "11",
+      "price": 212,
+      "discount": 212,
+      "quantity": 215,
+      "imageUrl": "http://localhost:5000/uploads/1753601552920-display_img.jpg"
+    },
+    {
+      "id": "49ca33d7-350e-455e-b20e-b43a9d04237c",
+      "productName": "테스트4",
+      "explanation": "45131",
+      "price": 2515,
+      "discount": 156,
+      "quantity": 21651,
+      "imageUrl": "http://localhost:5000/uploads/1753601870605-img-leeum-header.png"
     }
   ]
 }
