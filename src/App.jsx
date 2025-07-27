@@ -5,6 +5,7 @@ import Home from './components/Home';
 import AuthContext from './components/AuthContext';
 import AuthProvider from './components/AuthProvider';
 import MyPage from './components/MyPage';
+import GoodsRegistration from './components/GoodsRegistration';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='Login' element={<Login />} />
           <Route path='MyPage' element={<MyPage />} />
+          <Route path='GoodsRegistration' element={<GoodsRegistration />} />
         </Routes>
       </AuthProvider>
     </>

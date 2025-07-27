@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "productName": "가방",
+      "explanation": "가방입니다",
+      "price": 10000,
+      "discount": 10,
+      "quantity": 10,
+      "id": 1
+    },
+    {
+      "productName": "ㄴㄴㄴ",
+      "explanation": "ㅁㄴㅇㅁㄴㅇ",
+      "price": 45254,
+      "discount": 2424,
+      "quantity": 4245,
+      "id": 2
+    }
+  ]
+}
