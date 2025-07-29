@@ -4,7 +4,8 @@ import GoodsTextarea from './GoodsTextarea';
 import GoodsImgInput from './GoodsImgInput';
 import useGoods from './useGoods';
 import useGoodsUi from './useGoodsUi';
-import GoodsItems from './goodsItems';
+import { Link } from 'react-router-dom';
+import GoodsManagementItems from './GoodsManagementItems';
 
 const inputStyle = 'block w-full h-[50px] border mb-[20px] pl-[20px]';
 const numberInputStyle = 'pl-[20px] h-[30px] mb-[20px] border';
@@ -24,10 +25,27 @@ const GoodsRegistration = () => {
         imageInputRef 
     } = useGoods();
 
-    const {goodsLists, goodsUiFetch} = useGoodsUi();
+    const {goodsUiFetch, goodsLists, setGoodsLists} = useGoodsUi();
 
-    console.log(goodsLists);
+    const handleDelete = async (id) => {
+        confirm('상품을 삭제하시겠습니까?');
 
+        try{
+            const res = await fetch(`http://localhost:3005/products/${id}`, {
+                method: 'DELETE',
+            });
+
+            if(!res.ok) {
+                alert('상품 삭제 실패');
+                return false;
+            }
+
+            setGoodsLists(prev => prev.filter(product => product.id !== id));
+        }catch(err) {
+            console.error('상품 삭제 실패', err);
+            return false;
+        }
+    };
     
     return (
         <div className='w-[1200px] mx-auto my-0 pt-[20px] pb-[100px]'>
@@ -83,10 +101,9 @@ const GoodsRegistration = () => {
             </form>
 
             <h2 className='text-[30px] font-bold text-[#1D1D1D] pb-[10px] border-b-2 border-b-[#1D1D1D] mb-[30px]'>현재 등록된 상품</h2>
-
-            <div className='grid grid-cols-3'>
+            <div className='grid grid-cols-3 gap-[15px] gap-y-[40px] mt-[50px]'>
                 {goodsLists.map((item) => (
-                    <GoodsItems 
+                    <GoodsManagementItems 
                         key={item.id}
                         image={item.imageUrl}
                         productName={item.productName}
@@ -94,6 +111,9 @@ const GoodsRegistration = () => {
                         price={item.price}
                         discount={item.discount}
                         quantity={item.quantity}
+                        handleDelete={() => handleDelete(item.id)}
+                        id={item.id}
+                        handleUpdateGoods={() => handleUpdateGoods(item.id)}
                     />
                 ))}
             </div>

@@ -26,7 +26,7 @@ const useGoodsUi = () => {
         goodsUiFetch();
     }, []);
 
-    return {goodsLists, goodsUiFetch};
+    return {goodsLists, goodsUiFetch, setGoodsLists};
 };
 
 export default useGoodsUi

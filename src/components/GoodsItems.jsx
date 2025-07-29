@@ -5,17 +5,21 @@ const GoodsItems = ({
     productName,
     explanation,
     price,
-    discount,
-    quantity
+    discount
 }) => {
+    const discounted = () => {
+        return price - (price * (discount / 100));
+    };
+
     return (
-        <div>
-            <img src={image} alt={productName} />
-            <p>{productName}</p>
-            <p>{explanation}</p>
-            <span>{price}</span>
-            <span>{discount}</span>
-            <p>{quantity}</p>
+        <div className=''>
+            <div className='w-full h-[390px] mb-[10px]'>
+                <img src={image} alt={productName} className='h-full w-full' />
+            </div>
+            <p className='text-[20px] font-semibold mb-[10px]'>{productName}</p>
+            <p className='text-[14px] text-[#666] mb-[10px]'>{explanation}</p>
+            <span className='inline-block mr-[10px] text-[red]'>{discounted()}원</span>
+            <span className='inline-block text-[14px] text-[#666] line-through'>{price}원</span>
         </div>
     );
 };

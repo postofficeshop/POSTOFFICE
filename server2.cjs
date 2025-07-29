@@ -102,6 +102,32 @@ app.get('/goods', async (req, res) => {
     };
 }); 
 
+//제품 수정
+app.patch('/goods', async (req, res) => {
+    console.log('제품 수정 시작');
+    const {productName, explanation, price, discount, quantity, imageUrl} = req.body;
+
+    try{
+        const updateRes = await fetch(`${JSON_SERVER_URL}/products/${id}`, {
+            method: 'PATCH',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify({ productName, explanation, price, discount, quantity, imageUrl })
+        });
+
+        if(!updateRes.ok) {
+            console.error('제품 수정 실패');
+            return res.status(400).json({ message: '제품 수정 실패' });
+        }
+
+        console.log('제품 수정 성공');
+        const data = await updateRes.json()
+        return res.status(200).json({ message: '제품 수정에 성공하셨습니다', updateData: data });
+    } catch(err) {
+        console.error('제품 수정 서버 오류', err);
+        return res.status(500).json({ message: '제품 수정 서버 오류' })
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`http://localhost:${PORT} 실행 중`);
 });
