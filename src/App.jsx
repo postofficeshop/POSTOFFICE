@@ -1,24 +1,17 @@
-import Header from './components/Header';
-import { Route, Routes } from 'react-router-dom';
-import Login from './components/Login';
-import Home from './components/Home';
-import AuthContext from './components/AuthContext';
-import AuthProvider from './components/AuthProvider';
-import MyPage from './components/MyPage';
-import GoodsRegistration from './components/GoodsRegistration';
+import Header from './layouts/Header';
+import AuthProvider from './context/auth/AuthProvider'
+import AppRouter from './routes/AppRouter';
+import GoodsProvider from './context/goods/GoodsProvider';
 
 function App() {
   return (
     <>
-      <AuthProvider>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='Login' element={<Login />} />
-          <Route path='MyPage' element={<MyPage />} />
-          <Route path='GoodsRegistration' element={<GoodsRegistration />} />
-        </Routes>
-      </AuthProvider>
+      <GoodsProvider>
+        <AuthProvider>
+          <Header />
+          <AppRouter />
+        </AuthProvider>
+      </GoodsProvider>
     </>
   );
 }
