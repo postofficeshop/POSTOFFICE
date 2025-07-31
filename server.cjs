@@ -8,14 +8,14 @@ const path = require('path');
 const app = express();
 const PORT = 4000;
 
-app.use(express.json());
-app.use(cookieParser());
-
 //cors 설정
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true //쿠키 허용
 }));
+
+app.use(express.json());
+app.use(cookieParser());
 
 const SECRET_KEY = 'your_secret_key_here';
 
@@ -109,6 +109,8 @@ app.patch('/user', verifyToken, (req, res) => {
 
     res.json({ message: '이름 변경 완료', user: db.users[userIndex] });
 });
+
+
 
 
 app.listen(PORT, () => {

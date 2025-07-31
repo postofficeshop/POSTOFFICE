@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "id": "51ffd8fd-088e-4a48-9b22-698e02df8589",
+      "productName": "테스",
+      "explanation": "테스",
+      "price": 10000,
+      "discount": 5,
+      "quantity": 15,
+      "imageUrl": "http://localhost:5000/uploads/1753792881414-collection_img2.jpg"
+    },
+    {
+      "id": "fa4b5a79-6c51-4c15-891b-23a102cedaa7",
+      "productName": "ㅋ",
+      "explanation": "ㅋㅋㅋ",
+      "price": "111",
+      "discount": "111",
+      "quantity": "11",
+      "imageUrl": "http://localhost:5000/uploads/1753887538643-726019297.gif"
+    }
+  ]
+}
