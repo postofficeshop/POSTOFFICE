@@ -1,14 +1,20 @@
 {
   "users": [
     {
-      "id": "test@gmail.com",
-      "password": "test123456",
-      "name": "홍길동"
+      "name": "성종주",
+      "phone": "010-8690-3363",
+      "birthData": "990408",
+      "email": "sjj990480@naver.com",
+      "id": "sjj990480",
+      "password": "qwe051345"
     },
     {
-      "id": "test@naver.com",
-      "password": "abc123456",
-      "name": "홍길동"
+      "name": "홍길동",
+      "phone": "010-0000-0000",
+      "birthData": "001231",
+      "email": "hong123@naver.com",
+      "id": "hong123",
+      "password": "hong123456"
     }
   ]
 }

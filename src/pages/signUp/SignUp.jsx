@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useSignUp from '../hooks/signUp/useSignUp';
+import useSignUp from '../../hooks/signUp/useSignUp';
 
 const SignUp = () => {
     const {signUpState, dispatch, handleSignUpSuccess} = useSignUp();
@@ -37,7 +37,7 @@ const SignUp = () => {
                         className='block border w-full h-10 pl-[10px] mb-8'  
                         type="text"
                         placeholder='ex) 생년월일 6자리'
-                        value={signUpState.birthDate}
+                        value={signUpState.birthData}
                         onChange={(e) => {dispatch({ type: 'BIRTH', payload: e.target.value })}}
                     />
 

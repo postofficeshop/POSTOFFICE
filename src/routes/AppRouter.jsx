@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
-import Login from '../pages/Login';
+import Login from '../pages/login/Login';
 import MyPage from '../pages/user/MyPage';
 import GoodsRegistration from '../pages/goods/GoodsRegistration';
-import SignUp from '../pages/SignUp';
+import SignUp from '../pages/signUp/SignUp';
 
 const AppRouter = () => {
     return (

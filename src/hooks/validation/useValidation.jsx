@@ -2,7 +2,7 @@ import React from 'react';
 
 const useValidation = () => {
     const idRegex = /^[a-z0-9]{5,15}$/;
-    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+=-]).{8,}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
 
     const nameRegex = /^[가-힣]{2,10}$/;
     const emailRegex = /^[a-z0-9]+@(naver|gmail)\.com$/;

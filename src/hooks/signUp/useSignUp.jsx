@@ -1,10 +1,11 @@
 import React, { useReducer } from 'react';
 import useValidation from '../validation/useValidation';
+import { useNavigate } from 'react-router-dom';
 
 const initValue = {
     name: '',
     phone: '',
-    birthDate: '',
+    birthData: '',
     email: '',
     id: '',
     password: ''
@@ -17,7 +18,7 @@ const reducer = (state, action) => {
         case 'PHONE':
             return {...state, phone: action.payload}
         case 'BIRTH':
-            return {...state, birthDate: action.payload}
+            return {...state, birthData: action.payload}
         case 'EMAIL':
             return {...state, email: action.payload}
         case 'ID': 
@@ -32,6 +33,7 @@ const reducer = (state, action) => {
 const useSignUp = () => {
     const [signUpState, dispatch] = useReducer(reducer, initValue);
     const {idRegex, passwordRegex, nameRegex, emailRegex, birthRegex, phoneRegex} = useValidation();
+    const navigate = useNavigate();
 
     const sighUpFetch = async () => {
         //이름 유효성 검사
@@ -45,8 +47,8 @@ const useSignUp = () => {
         };
 
         //생년월일 유효성 검사
-        if(!birthRegex.test(signUpState.birthDate.trim())) {
-            return alert('유효하지 않은 생년월일입니다. ex) ex) YYMMDD');
+        if(!birthRegex.test(signUpState.birthData.trim())) {
+            return alert('유효하지 않은 생년월일입니다. ex) YYMMDD');
         };
 
         //이메일 유효성 검사
@@ -65,13 +67,13 @@ const useSignUp = () => {
         };
 
         try {
-            const res = await fetch('http://localhost:4000/join', {
+            const res = await fetch('http://localhost:4000/signUp', {
                 method: 'POST',
                 headers: {'Content-Type':'application/json'},
                 body: JSON.stringify({ 
                                         name: signUpState.name,
                                         phone: signUpState.phone,
-                                        birthDate: signUpState.birthDate,
+                                        birthData: signUpState.birthData,
                                         email: signUpState.email,
                                         id: signUpState.id,
                                         password: signUpState.password
@@ -88,7 +90,7 @@ const useSignUp = () => {
 
             console.log('회원가입 성공', data.message);
             alert(`${data.message} ${signUpState.name}, ${signUpState.id}`)
-            
+            navigate('/');
         } catch(err) {
             console.error('회원가입 서버 오류', err);
             return;

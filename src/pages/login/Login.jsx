@@ -1,9 +1,9 @@
 import React from 'react';
-import computerIco from '../assets/images/imgi_21_login_wrap_bg_1.gif';
-import kakaoLoginImg from '../assets/images/imgi_3_btn_login_kakao_sm.jpg';
-import naverLoginImg from '../assets/images/imgi_4_btn_login_naver_sm.jpg';
+import computerIco from '../../assets/images/imgi_21_login_wrap_bg_1.gif';
+import kakaoLoginImg from '../../assets/images/imgi_3_btn_login_kakao_sm.jpg';
+import naverLoginImg from '../../assets/images/imgi_4_btn_login_naver_sm.jpg';
 import { Link } from 'react-router-dom';
-import useLogin from '../hooks/useLogin';
+import useLogin from '../../hooks/login/useLogin';
 
 const loginTabStyle = "flex items-center justify-center w-[calc(100%/3)] text-[18px] text-[#555] leading-[70px] border-t border-t-[#ddd] border-b border-b-[#999] border-l border-l-[#ddd]";
 const loginTabActive = "border-b-[#fff] !border-t-[#999] !border-l-[#999] !border-r-[#999] text-[#1D1D1D] font-bold text-[22px]";
