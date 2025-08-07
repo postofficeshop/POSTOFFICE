@@ -19,6 +19,48 @@ app.use(cookieParser());
 
 const SECRET_KEY = 'your_secret_key_here';
 
+//회원가입
+app.post('/join', async (req, res) => {
+    console.log('회원가입 서버 실행');
+    const {name, email, id, password} = req.body;
+
+    try{
+        const dbPath = path.join(__dirname, 'joindb.json');
+        const db = JSON.parse(fs.readFileSync(dbPath, 'utf-8'));
+
+        //이메일 중복검사
+        const findUserEmail = db.users.find(user => user.email === email);
+        if(findUserEmail) {
+            console.error('이메일 중복');
+            return res.status(409).json({ message: '이미 사용중인 이메일입니다.' });
+        }
+
+        //아이디 중복검사
+        const findUserId = db.users.find(user => user.id === id);
+        if(findUserId) {
+            console.error('아이디 중복');
+            return res.status(409).json({ message: '이미 사용중인 아이디입니다.' });
+        };
+
+        //새로운 유저 생성
+        const createUserRes = await fetch(`${JSON_SERVER_URL}/users`, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({name, email, id, password})
+        });
+
+        if(!createUserRes.ok) {
+            return res.status(500).json({ message: '회원가입에 실패하였습니다.' });
+        }
+
+        const newUser = await createUserRes.json();
+        res.status(201).json({ message: '회원가입 성공', user: newUser });
+    }catch(err) {
+        console.error('회원가입 서버 오류', err);
+        return res.status(500).json({ message: '회원가입 서버 오류' });
+    }
+});
+
 //로그인 API
 app.post('/login', (req, res) => {
     const {id, password} = req.body;

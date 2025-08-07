@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-import useGoodsUi from '../hooks/useGoodsUi';
 import GoodsItems from '../features/goods/GoodsItems';
 import { GoodsContext } from '../context/goods/GoodsContext';
 

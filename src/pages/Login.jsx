@@ -81,13 +81,13 @@ const Login = () => {
                         </div>
 
                         <div className='flex pl-[79.5px] mt-[10px]'>
-                            <Link to={'/Join'} className='mr-[5px] w-[40%] h-[30px] border flex items-center justify-center bg-[#fff] text-[14px] text-[#EE2E24]'>
+                            <Link to={'/SignUp'} className='mr-[5px] w-[40%] h-[30px] border flex items-center justify-center bg-[#fff] text-[14px] text-[#EE2E24]'>
                                 회원가입
                             </Link>
-                            <Link to={'/Join'} className='mr-[5px] w-[30%] h-[30px] border flex items-center justify-center bg-[#fff] text-[14px]'>
+                            <Link to={'/'} className='mr-[5px] w-[30%] h-[30px] border flex items-center justify-center bg-[#fff] text-[14px]'>
                                 아이디 찾기
                             </Link>
-                            <Link to={'/Join'} className='w-[30%] h-[30px] border flex items-center justify-center bg-[#fff] text-[14px]'>
+                            <Link to={'/'} className='w-[30%] h-[30px] border flex items-center justify-center bg-[#fff] text-[14px]'>
                                 비밀번호 찾기
                             </Link>
                         </div>

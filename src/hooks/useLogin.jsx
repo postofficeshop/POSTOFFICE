@@ -8,6 +8,7 @@ const useLogin = () => {
     const [userIdChecked, setUserIdChecked] = useState(false);
     const idInputRef = useRef();
     const pwInputRef = useRef();
+    //const [message, setMessage] = useState('');
 
     //로그인 커스텀 훅
     const { login, setIsLogged } = useAuth();
@@ -21,7 +22,6 @@ const useLogin = () => {
         }
     }, []);
     
-    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const handleChangeId = (e) => {
@@ -69,11 +69,11 @@ const useLogin = () => {
 
             if(!res.ok) {
                 alert(data.message);
-                setMessage(data.message);
+                //setMessage(data.message);
                 return;
             };
 
-            setMessage(`${data.name} / ${data.id}, 로그인 성공`);
+           //setMessage(`${data.name} / ${data.id}, 로그인 성공`);
 
             const userData = {id: data.id, name: data.name};
 
@@ -91,7 +91,7 @@ const useLogin = () => {
             navigate('/'); //로그인 성공
 
         } catch(err) {
-            setMessage('오류 발생');
+            //setMessage('오류 발생');
             console.error(err, "오류 발생");
         }
     };
