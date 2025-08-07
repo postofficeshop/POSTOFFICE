@@ -17,6 +17,15 @@
       "discount": "111",
       "quantity": "11",
       "imageUrl": "http://localhost:5000/uploads/1753887538643-726019297.gif"
+    },
+    {
+      "id": "08a95149-d2a4-44cf-b2dd-7e644e04554f",
+      "productName": "테스트",
+      "explanation": "테스트입니다",
+      "price": "100000",
+      "discount": "10",
+      "quantity": "3",
+      "imageUrl": "http://localhost:5000/uploads/1754569074576-80909690.gif"
     }
   ]
 }

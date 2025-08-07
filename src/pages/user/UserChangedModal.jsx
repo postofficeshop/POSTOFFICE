@@ -1,5 +1,5 @@
 import React from 'react';
-import useUserChanged from '../../hooks/useUserChanged';
+import useUserChanged from '../../hooks/user/useUserChanged';
 
 const UserChangedModal = ({
         handleSubmitUserUpdate,

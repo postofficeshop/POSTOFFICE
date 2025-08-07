@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useAuth from './useAuth';
+import useAuth from '../login/useAuth';
 
 const useUserChanged = () => {
     const {isLogged, setUser} = useAuth();

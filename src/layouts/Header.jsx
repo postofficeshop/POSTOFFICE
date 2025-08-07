@@ -6,7 +6,7 @@ import cartIco from '../assets/images/imgi_194_icon_cart.gif';
 import myShoppingIco from '../assets/images/imgi_195_icon_myshopping.jpg';
 import hamIco from '../assets/images/imgi_16_icon_allmenu_off.gif';
 import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/login/useAuth';
 
 const gnbItemStyle = "pt-[10px] pb-[10px] pl-[10px] pr-[10px] text-[15px] font-medium";
 

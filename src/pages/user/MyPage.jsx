@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/login/useAuth';
 import ModalPortal from '../../components/portal/ModalPortal';
 import UserChangedModal from './UserChangedModal';
-import useUserChanged from '../../hooks/useUserChanged';
+import useUserChanged from '../../hooks/user/useUserChanged';
 
 const MyPage = () => {
     const {isLogged} = useAuth();

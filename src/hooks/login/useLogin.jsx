@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
+import useValidation from '../validation/useValidation';
 
 const useLogin = () => {
     const [userId, setUserId] = useState('');
@@ -12,6 +13,9 @@ const useLogin = () => {
     //로그인 커스텀 훅
     const { login, setIsLogged } = useAuth();
 
+    //유효성 검사
+    const {idRegex, passwordRegex} = useValidation();
+
     //아이디 저장
     useEffect(() => {
         const savedId = localStorage.getItem('userSavedId');
@@ -21,7 +25,6 @@ const useLogin = () => {
         }
     }, []);
     
-    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const handleChangeId = (e) => {
@@ -40,9 +43,6 @@ const useLogin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const idRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-        const pwRegex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,}$/;
-
         //아이디 유효성 검사
         if(!idRegex.test(userId.trim())) {
             alert('아이디가 올바르지 않습니다. abc@abc 형식');
@@ -51,7 +51,7 @@ const useLogin = () => {
         }
 
         //패스워드 유효성 검사
-        if(!pwRegex.test(userPassword.trim())) {
+        if(!passwordRegex.test(userPassword.trim())) {
             alert('비밀번호가 올바르지 않습니다. 영문 소문자 + 숫자 총 8자 이상');
             pwInputRef.current.focus();
             return;
@@ -69,11 +69,8 @@ const useLogin = () => {
 
             if(!res.ok) {
                 alert(data.message);
-                setMessage(data.message);
                 return;
             };
-
-            setMessage(`${data.name} / ${data.id}, 로그인 성공`);
 
             const userData = {id: data.id, name: data.name};
 
@@ -91,7 +88,6 @@ const useLogin = () => {
             navigate('/'); //로그인 성공
 
         } catch(err) {
-            setMessage('오류 발생');
             console.error(err, "오류 발생");
         }
     };

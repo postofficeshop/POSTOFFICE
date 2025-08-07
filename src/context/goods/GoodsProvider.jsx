@@ -28,21 +28,6 @@ const GoodsProvider = ({ children }) => {
         }
     }, []);
 
-    /* const updateGoods = useCallback(async (id, updatedData) => {
-        try {
-            const res = await fetch(`http://localhost:5000/goods/${id}`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(updatedData),
-            });
-            if (!res.ok) throw new Error('수정 실패');
-            const updatedItem = await res.json();
-            setGoodsLists(prev => prev.map(item => (item.id === id ? updatedItem : item)));
-        } catch (err) {
-            setError(err.message);
-        }
-    }, []); */
-
     useEffect(() => {
         fetchGoods();
     }, [fetchGoods]);
@@ -114,7 +99,6 @@ const GoodsProvider = ({ children }) => {
                 loading,
                 error,
                 fetchGoods,
-                updateGoods,
                 goodsState,
                 setGoodsLists,
                 handleInputChange,
