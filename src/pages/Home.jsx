@@ -20,16 +20,17 @@ const Home = () => {
                 </Link>
                 : ''
             }
-            <div className='grid grid-cols-3 gap-[15px] gap-y-[40px] mt-[50px]'>
+            <div className='grid grid-cols-4 gap-[15px] gap-y-[40px] mt-[50px]'>
                 {goodsLists.map((item) => (
-                    <GoodsItems 
-                        key={item.id}
-                        image={item.imageUrl}
-                        productName={item.productName}
-                        explanation={item.explanation}
-                        price={item.price}
-                        discount={item.discount}
-                    />
+                    <Link to={`/View/${item.id}`} key={item.id}>
+                        <GoodsItems 
+                            image={item.imageUrl}
+                            productName={item.productName}
+                            explanation={item.explanation}
+                            price={item.price}
+                            discount={item.discount}
+                        />
+                    </Link>
                 ))}
             </div>
         </div>

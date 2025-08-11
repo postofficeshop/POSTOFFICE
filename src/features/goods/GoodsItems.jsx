@@ -13,7 +13,7 @@ const GoodsItems = ({
     };
 
     return (
-        <div className=''>
+        <div>
             <div className='w-full h-[390px] mb-[10px]'>
                 <img src={image} alt={productName} className='h-full w-full' />
             </div>
